@@ -15,10 +15,14 @@ class Item:
         return self.price * self.quantity
     
     def apply_discount(self):
-        pass
+        self.price = self.price * self.pay_rate
 
 item1 = Item("Phone", 100, 5)
-item2 = Item("Computer", 2500, 2)
+item2 = Item("Computer", 1000, 2)
 
-print(Item.__dict__) #all attribute of the class level  
-print(item1.__dict__) # all attribute of the instance level
+item1.apply_discount()
+print(item1.price)
+
+item2.pay_rate = 0.7
+item2.apply_discount()
+print(item2.price)
