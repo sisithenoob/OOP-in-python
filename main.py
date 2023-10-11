@@ -1,4 +1,7 @@
 class Item:
+    def __init__(self):
+        print("I am created !!!!")
+
     def calculate_total_price(self, price, quantity):
         return self.price * self.quantity
 
