@@ -10,12 +10,34 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not equal or greater than zero"
 
         #assign to self object
-        self.name = name
-        self.price = price
+        self.__name = name
+        self.__price = price
         self.quantity = quantity
 
         #actions to execute
         Item.all.append(self)#append the instance of the class to the list of all the item in our shop
+
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, new_name):
+        if len(new_name) > 10:
+            raise Exception("Your name is too long we only accept 10 character")
+        else:
+            self.__name = new_name
+
+    @property
+    def price(self):
+        return self.__price
+    
+    @price.setter
+    def price(self, new_price):
+        if new_price <= 0:
+            raise Exception("We cannot sell something that is worth nothing")
+        else:
+            self.__price = new_price
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -47,3 +69,4 @@ class Item:
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.price}, {self.quantity})"
+    
