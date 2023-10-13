@@ -40,10 +40,10 @@ class Item:
             self.__price = new_price
 
     def calculate_total_price(self):
-        return self.price * self.quantity
+        return self.__price * self.quantity
     
     def apply_discount(self):
-        self.price = self.price * self.pay_rate
+        self.__price = self.__price * self.pay_rate
 
     @classmethod
     def instantiate_from_csv(cls):
